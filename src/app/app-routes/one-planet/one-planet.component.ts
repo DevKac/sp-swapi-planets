@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./one-planet.component.less']
 })
 export class OnePlanetComponent implements OnInit {
+  // id loaded from URL
 	public currentId: string;
 
   constructor (

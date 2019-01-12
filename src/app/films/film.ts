@@ -12,12 +12,6 @@ export class Film {
   starshipsUrls: string[];
   vehiclesUrls: string[];
   speciesUrls: string[];
-  // todo
-  /*
-  "created": "2014-12-10T11:35:48.479000Z",
-  "edited": "2014-12-20T20:58:18.420000Z",
-  "url": "https://swapi.co/api/planets/2/"
-  */
 
   constructor(json: any = null) {
     if (!isNullOrUndefined(json)) {

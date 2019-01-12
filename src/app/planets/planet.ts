@@ -13,12 +13,6 @@ export class Planet {
   population: string;
   residentsUrls: string[];
   filmsUrls: string[];
-  // todo
-  /*
-  "created": "2014-12-10T11:35:48.479000Z",
-  "edited": "2014-12-20T20:58:18.420000Z",
-  "url": "https://swapi.co/api/planets/2/"
-  */
 
   constructor(json: any = null) {
     if (!isNullOrUndefined(json)) {
@@ -29,7 +23,6 @@ export class Planet {
   public fillDataFromJson(json: any) {
     if (!isNullOrUndefined(json)) {
       if (!isNullOrUndefined(json['url'])) {
-        // todo: make it cleaner
         this.id = json['url'].split('/').slice(-2)[0];
       }
       this.name = json['name'];
