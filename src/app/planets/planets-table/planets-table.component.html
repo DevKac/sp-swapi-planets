@@ -1,0 +1,95 @@
+<!-- Search bar -->
+<div class="input-group">
+  <input type="text"
+         class="form-control"
+         placeholder="Search..."
+         aria-label="Search..."
+         [(ngModel)]="searchedValue"
+         (keydown.enter)="searchValue(true)"
+  >
+  <div class="input-group-append">
+    <span class="input-group-text" id="search-icon" (click)="searchValue(true)">
+      <fa name="search"></fa>
+    </span>
+    <span class="input-group-text" id="cancel-icon" *ngIf="searchActive" (click)="searchValue(false)">
+      <fa name="times"></fa>
+    </span>
+  </div>
+</div>
+<!-- End of Search bar -->
+
+<!-- Table with planets -->
+<table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Diameter</th>
+    <th>Climate</th>
+    <th>Gravity</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let planet of listOfPlanets">
+    <tr [routerLink]="['/planet/' + planet.id]" class="clickable">
+      <td>{{ planet.id }}</td>
+      <td>{{ planet.name }}</td>
+      <td>{{ planet.diameter }}</td>
+      <td>{{ planet.climate }}</td>
+      <td>{{ planet.gravity }}</td>
+    </tr>
+  </ng-container>
+  <tr *ngIf="loading">
+    <!-- Show loading message -->
+    <td colspan="5">
+      <app-loading [message]="loadingMsg"></app-loading>
+    </td>
+    <!-- End of Show loading message -->
+  </tr>
+  <tr *ngIf="error">
+    <!-- Show error message -->
+    <td colspan="5">
+      <app-error [message]="errorMsg"></app-error>
+    </td>
+    <!-- End of Show error message -->
+  </tr>
+  <tr *ngIf="!loading && !error && listOfPlanets.length == 0">
+    <!-- Show no results message -->
+    <td colspan="5">
+      <ng-container *ngIf="searchActive; else empty_db">
+        No results found...
+      </ng-container>
+      <ng-template #empty_db>
+        There are no planets in the database!
+      </ng-template>
+    </td>
+    <!-- End of Show no results message -->
+  </tr>
+  </tbody>
+</table>
+<!-- End of Table with planets -->
+
+<div class="" *ngIf="totalNumberOfPlanets > 0">
+  <!-- Set how many planets per page -->
+  <ng-container *ngFor="let possibleValue of possibleNumberOfPlanetsPerPage">
+    <span class="possible-number-of-planets-per-page"
+          [ngClass]="{'current-number-of-planets-per-page' :possibleValue == numberOfPlanetsPerPage}"
+          (click)="changeNumberOfPlanetsOnPage(possibleValue)"
+    >
+      {{ possibleValue }}
+    </span>
+  </ng-container>
+  <!-- End of Set how many planets per page -->
+  <!-- Pagination for the table -->
+  <ngb-pagination
+    class="d-flex justify-content-end"
+    [collectionSize]="totalNumberOfPlanets"
+    [pageSize]="numberOfPlanetsPerPage"
+    [maxSize]="3"
+    [rotate]="true"
+    [boundaryLinks]="true"
+    [(page)]="currentPage"
+    (pageChange)="changePage($event)"
+  ></ngb-pagination>
+  <!-- End of Pagination for the table -->
+</div>

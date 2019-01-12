@@ -1,0 +1,65 @@
+<div class="card">
+	<!-- Show info about current planet -->
+  <ng-container *ngIf="currentPlanet">
+		<div class="card-body">
+			<fa name="arrow-left" size="2x" style="float: right" [routerLink]="['/planets']"></fa>
+		  <h2 class="card-title">{{ currentPlanet.name }}</h2>
+		</div>
+		<ul class="list-group list-group-flush">
+		  <li class="list-group-item">
+		  	<strong>Rotation period:</strong> {{ currentPlanet.rotationPeriod }}
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Orbital period:</strong> {{ currentPlanet.orbitalPeriod }}
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Diameter:</strong> {{ currentPlanet.diameter }}
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Climate:</strong> {{ currentPlanet.climate }}
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Gravity:</strong> {{ currentPlanet.gravity }}
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Terrain:</strong> {{ currentPlanet.terrain }}
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Surface water:</strong> {{ currentPlanet.surfaceWater }}
+		  </li>
+		  <li class="list-group-item">
+		  	<strong>Population:</strong> {{ currentPlanet.population }}
+		  </li>
+		  <li class="list-group-item" *ngIf="currentPlanet.residentsUrls">
+		  	<strong>Residents:</strong> {{ currentPlanet.residentsUrls.length }}
+		  	<div *ngFor="let residentUrl of currentPlanet.residentsUrls">
+		  		<app-people-info [peopleUrl]="residentUrl"></app-people-info>
+		  	</div>	
+		  </li>
+		  <li class="list-group-item" *ngIf="currentPlanet.filmsUrls">
+		  	<strong>Films:</strong> {{ currentPlanet.filmsUrls.length }}
+		  	<div *ngFor="let filmUrl of currentPlanet.filmsUrls">
+		  		<app-film-info [filmUrl]="filmUrl"></app-film-info>
+		  	</div>	
+		  </li>
+		</ul>
+  </ng-container>
+  <!-- End of Show info about current planet -->
+
+  <!-- Show loading message -->
+  <ng-container *ngIf="loading">
+  	<div class="card-body">
+  		<app-loading [message]="loadingMsg"></app-loading>
+  	</div>
+  </ng-container>
+  <!-- End of Show loading message -->
+
+  <!-- Show error message -->
+  <ng-container *ngIf="error">
+  	<div class="card-body">
+  		<app-error [message]="errorMsg"></app-error>
+  	</div>
+  </ng-container>
+  <!-- End of Show error message -->
+
+</div>

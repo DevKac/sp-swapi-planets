@@ -1,0 +1,21 @@
+<!-- Show info about current film -->
+<ng-container *ngIf="currentFilm">
+	<i>- <a href="{{ filmUrl }}" target="_blank">{{ currentFilm.title }}</a></i>
+</ng-container>
+<!-- End of Show info about current film -->
+
+<!-- Show loading message -->
+<ng-container *ngIf="loading">
+	<div class="card-body">
+		<app-loading [message]="loadingMsg"></app-loading>
+	</div>
+</ng-container>
+<!-- End of Show loading message -->
+
+<!-- Show error message -->
+<ng-container *ngIf="error">
+	<div class="card-body">
+		<app-error [message]="errorMsg"></app-error>
+	</div>
+</ng-container>
+<!-- End of Show error message -->
