@@ -1,9 +1,9 @@
-<div class="card">
+<div class="card planet-details-container">
 	<!-- Show info about current planet -->
   <ng-container *ngIf="currentPlanet">
 		<div class="card-body">
 			<fa name="arrow-left" size="2x" class="clickable" style="float: right" [routerLink]="['/planets']"></fa>
-		  <h2 class="card-title">{{ currentPlanet.name }}</h2>
+		  <h2 class="card-title" style="margin-bottom: 0">{{ currentPlanet.name }}</h2>
 		</div>
 		<ul class="list-group list-group-flush">
 		  <li class="list-group-item">
