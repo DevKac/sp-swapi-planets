@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment'; 
-import { isNullOrUndefined } from 'util';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class FilmsService {
-	private getFilmEndPoint: string;
+  private getFilmEndPoint: string;
 
   constructor (
-  	private http: HttpClient
+    private http: HttpClient
   ) {
-  	this.getFilmEndPoint = environment.backEndPath + 'api/films/';
+    this.getFilmEndPoint = environment.backEndPath + 'api/films/';
   }
 
   public getOneFilmById(id: string) {

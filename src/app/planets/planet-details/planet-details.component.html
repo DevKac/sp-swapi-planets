@@ -2,8 +2,8 @@
 	<!-- Show info about current planet -->
   <ng-container *ngIf="currentPlanet">
 		<div class="card-body">
-			<fa name="arrow-left" size="2x" class="clickable" style="float: right" [routerLink]="['/planets']"></fa>
-		  <h2 class="card-title" style="margin-bottom: 0">{{ currentPlanet.name }}</h2>
+			<fa name="arrow-left" size="2x" class="float-right clickable" [routerLink]="['/planets']"></fa>
+		  <h2 class="card-title no-margin-bottom">{{ currentPlanet.name }}</h2>
 		</div>
 		<ul class="list-group list-group-flush">
 		  <li class="list-group-item">
@@ -34,13 +34,13 @@
 		  	<strong>Residents:</strong> {{ currentPlanet.residentsUrls.length }}
 		  	<div *ngFor="let residentUrl of currentPlanet.residentsUrls">
 		  		<app-people-info [peopleUrl]="residentUrl"></app-people-info>
-		  	</div>	
+		  	</div>
 		  </li>
 		  <li class="list-group-item" *ngIf="currentPlanet.filmsUrls">
 		  	<strong>Films:</strong> {{ currentPlanet.filmsUrls.length }}
 		  	<div *ngFor="let filmUrl of currentPlanet.filmsUrls">
 		  		<app-film-info [filmUrl]="filmUrl"></app-film-info>
-		  	</div>	
+		  	</div>
 		  </li>
 		</ul>
   </ng-container>

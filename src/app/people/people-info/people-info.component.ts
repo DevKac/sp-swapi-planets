@@ -15,11 +15,11 @@ export class PeopleInfoComponent extends BasicComponent implements OnInit {
   public currentPeople: People;
 
   constructor (
-  	private peopleService: PeopleService
+    private peopleService: PeopleService
   ) {
-  	super();
-  	// set default values for parameters
-  	this.currentPeople = null;
+    super();
+    // set default values for parameters
+    this.currentPeople = null;
   }
 
   ngOnInit() {
@@ -28,19 +28,19 @@ export class PeopleInfoComponent extends BasicComponent implements OnInit {
 
   // PROTECTED REGION
   protected updateDataFromServices() {
-  	this.showLoading('Loading info...');
-  	if (!isNullOrUndefined(this.peopleUrl) && this.peopleUrl.length) {
-  		this.peopleService.getOnePeopleFromUrl(this.peopleUrl).subscribe(
-  			data => {
-  				// console.log(data);
-  				this.currentPeople = new People(data);
+    this.showLoading('Loading info...');
+    if (!isNullOrUndefined(this.peopleUrl) && this.peopleUrl.length) {
+      this.peopleService.getOnePeopleFromUrl(this.peopleUrl).subscribe(
+        data => {
+          // console.log(data);
+          this.currentPeople = new People(data);
           this.hideLoading();
-  			}, error => {
-  				this.showError('Data could not be loaded, please try refreshing this page.', 0, true);
-  			});
-  	} else {
-  		this.showError('This data could not be loaded, please try loading another page..', 0, true);
-  	}
+        }, error => {
+          this.showError('Data could not be loaded, please try refreshing this page.', 0, true);
+        });
+    } else {
+      this.showError('This data could not be loaded, please try loading another page..', 0, true);
+    }
   }
   // End of PROTECTED REGION
 

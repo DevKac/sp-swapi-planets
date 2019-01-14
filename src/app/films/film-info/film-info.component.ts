@@ -15,11 +15,11 @@ export class FilmInfoComponent extends BasicComponent implements OnInit {
   public currentFilm: Film;
 
   constructor (
-  	private filmsService: FilmsService
+    private filmsService: FilmsService
   ) {
-  	super();
-  	// set default values for parameters
-  	this.currentFilm = null;
+    super();
+    // set default values for parameters
+    this.currentFilm = null;
   }
 
   ngOnInit() {
@@ -28,19 +28,19 @@ export class FilmInfoComponent extends BasicComponent implements OnInit {
 
   // PROTECTED REGION
   protected updateDataFromServices() {
-  	this.showLoading('Loading info...');
-  	if (!isNullOrUndefined(this.filmUrl) && this.filmUrl.length) {
-  		this.filmsService.getOneFilmFromUrl(this.filmUrl).subscribe(
-  			data => {
-  				// console.log(data);
-  				this.currentFilm = new Film(data);
+    this.showLoading('Loading info...');
+    if (!isNullOrUndefined(this.filmUrl) && this.filmUrl.length) {
+      this.filmsService.getOneFilmFromUrl(this.filmUrl).subscribe(
+        data => {
+          // console.log(data);
+          this.currentFilm = new Film(data);
           this.hideLoading();
-  			}, error => {
-  				this.showError('Data could not be loaded, please try refreshing this page.', 0, true);
-  			});
-  	} else {
-  		this.showError('This data could not be loaded, please try loading another page..', 0, true);
-  	}
+        }, error => {
+          this.showError('Data could not be loaded, please try refreshing this page.', 0, true);
+        });
+    } else {
+      this.showError('This data could not be loaded, please try loading another page..', 0, true);
+    }
   }
   // End of PROTECTED REGION
 

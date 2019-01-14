@@ -24,7 +24,7 @@ body {
 		color: white;
 	}
 	input.form-control:focus {
-		webkit-box-shadow: none;
+		--webkit-box-shadow: none;
 	  box-shadow: none;
 	}
 	div.input-group-append {
@@ -44,7 +44,7 @@ ul.pagination {
 		  color: white;
 		}
 		a.page-link:focus {
-		  webkit-box-shadow: none;
+		  --webkit-box-shadow: none;
     	box-shadow: none;
 		}
 	}
@@ -55,7 +55,7 @@ ul.pagination {
 		  color: @darkBackground;
 		}
 		a.page-link:focus {
-		  webkit-box-shadow: none;
+		  --webkit-box-shadow: none;
     	box-shadow: none;
 		}
 	}
@@ -81,5 +81,14 @@ ul.list-group {
 // Helpers
 .clickable {
 	cursor: pointer;
+}
+.float-right {
+  float: right;
+}
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+.small-margin-left {
+  margin-left: 5px;
 }
 // End of Helpers

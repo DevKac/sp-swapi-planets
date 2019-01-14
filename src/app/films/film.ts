@@ -31,7 +31,7 @@ export class Film {
       this.planetsUrls = json['planets'];
       this.starshipsUrls = json['starships'];
       this.vehiclesUrls = json['vehicles'];
-      this.speciesUrls = json['species'];    
+      this.speciesUrls = json['species'];
     } else {
       throw new Error(Film.name + ': fillDataFromJson: json with data is null!');
     }

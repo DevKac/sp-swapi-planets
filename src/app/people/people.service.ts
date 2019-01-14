@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment'; 
-import { isNullOrUndefined } from 'util';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PeopleService {
-	private getPeopleEndPoint: string;
+  private getPeopleEndPoint: string;
 
   constructor (
-  	private http: HttpClient
+    private http: HttpClient
   ) {
-  	this.getPeopleEndPoint = environment.backEndPath + 'api/people/';
+    this.getPeopleEndPoint = environment.backEndPath + 'api/people/';
   }
 
   public getOnePeopleById(id: string) {
