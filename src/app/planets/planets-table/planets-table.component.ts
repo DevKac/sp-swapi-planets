@@ -51,7 +51,7 @@ export class PlanetsTableComponent extends BasicComponent implements OnInit {
     // calculate at which index to start loading
     const startingIndex = this.numberOfPlanetsPerPage * (this.currentPage - 1) + 1;
     const startingPage = Math.floor(startingIndex / 10) + 1; // 10 comes from the fact that BE always returns 10 elements
-    this.planetsService.getAllPlanets(startingPage, this.searchedValue).subscribe(
+    this.planetsService.getAllPlanets(startingPage, this.searchedValue).then(
       data => {
         // console.log(data);
         if (data) {
@@ -79,7 +79,7 @@ export class PlanetsTableComponent extends BasicComponent implements OnInit {
   private getMorePlanets(url: string = null) {
     // if there are more results and list is not full get them
     if (!isNullOrUndefined(url) && url.length && this.listOfPlanets.length < this.numberOfPlanetsPerPage) {
-      this.planetsService.getAllPlanetsFromUrl(url).subscribe(
+      this.planetsService.getAllPlanetsFromUrl(url).then(
         data => {
           // console.log(data);
           if (data) {

@@ -18,7 +18,7 @@ export class PeopleService {
 
     return this.getOnePeopleFromUrl(url);
   }
-  public getOnePeopleFromUrl(url: string) {
-    return this.http.get(url);
+  public getOnePeopleFromUrl(url: string): Promise<any> {
+    return this.http.get(url).toPromise();
   }
 }

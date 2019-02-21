@@ -30,7 +30,7 @@ export class PeopleInfoComponent extends BasicComponent implements OnInit {
   protected updateDataFromServices() {
     this.showLoading('Loading info...');
     if (!isNullOrUndefined(this.peopleUrl) && this.peopleUrl.length) {
-      this.peopleService.getOnePeopleFromUrl(this.peopleUrl).subscribe(
+      this.peopleService.getOnePeopleFromUrl(this.peopleUrl).then(
         data => {
           // console.log(data);
           this.currentPeople = new People(data);

@@ -2,14 +2,16 @@
 
 @font-face {
   font-family: verdana;
-  src: url(assets/fonts/Verdana.ttf);
+  src:
+    local('Verdana'),
+    url(assets/fonts/Verdana.ttf);
 }
 // Styling HTML elements
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'verdana', sans-serif;
+  font-family: 'verdana', Verdana, sans-serif; 
 }
 body {
 	background-image: url("assets/img/starsBG.jpg");

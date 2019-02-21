@@ -30,7 +30,7 @@ export class PlanetDetailsComponent extends BasicComponent implements OnInit {
   protected updateDataFromServices() {
     this.showLoading('Loading details...');
     if (!isNullOrUndefined(this.planetId) && this.planetId.length) {
-      this.planetsService.getOnePlanetById(this.planetId).subscribe(
+      this.planetsService.getOnePlanetById(this.planetId).then(
         data => {
           // console.log(data);
           this.currentPlanet = new Planet(data);

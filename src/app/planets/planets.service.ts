@@ -22,12 +22,12 @@ export class PlanetsService {
 
     return this.getAllPlanetsFromUrl(url);
   }
-  public getAllPlanetsFromUrl(url: string = null) {
+  public getAllPlanetsFromUrl(url: string = null): Promise<any> {
     if (isNullOrUndefined(url)) {
       url = this.getPlanetsEndPoint;
     }
 
-    return this.http.get(url);
+    return this.http.get(url).toPromise();
   }
   public getOnePlanetById(id: string) {
     let url = this.getPlanetsEndPoint;
@@ -35,8 +35,8 @@ export class PlanetsService {
 
     return this.getOnePlanetFromUrl(url);
   }
-  public getOnePlanetFromUrl(url: string) {
-    return this.http.get(url);
+  public getOnePlanetFromUrl(url: string): Promise<any> {
+    return this.http.get(url).toPromise();
   }
 
 }
