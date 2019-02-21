@@ -1,0 +1,13 @@
+{
+  "name": "star-wars-planets",
+  "short_name": "SWP-PWA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+      "src": "assets/img/starsLogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+  }],
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

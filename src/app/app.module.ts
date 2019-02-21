@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { routing } from './app.routes';
@@ -37,13 +40,18 @@ import { PlanetsService } from './planets/planets.service';
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
+    ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
     AngularFontAwesomeModule,
     routing
   ],
   providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
     FilmsService,
     PeopleService,
-    PlanetsService,
+    PlanetsService
   ],
   bootstrap: [AppComponent]
 })
